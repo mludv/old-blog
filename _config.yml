@@ -16,7 +16,7 @@ author :
   email : maxiludvigsson@gmail.com
   github : mludv
   twitter : mludv
-  feedburner : feedname
+  feedburner : mludv
 
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt 
@@ -99,7 +99,7 @@ JB :
   analytics :
     provider : google 
     google : 
-        tracking_id : 'UA-123-12'
+        tracking_id : 'UA-31340763-1'
     getclicky :
       site_id : 
     mixpanel :

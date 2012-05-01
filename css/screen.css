@@ -135,7 +135,7 @@ ul.posts {
 
   ul.posts span {
     color: #aaa;
-    font-family: Monaco, "Courier New", monospace;
+    font-family: Monaco, "Consolas", "Courier New", monospace;
     font-size: 80%;
   }
 
@@ -200,8 +200,8 @@ ul.posts {
       }
 
     .site .footer .rss {
-      margin-top: 1.1em;
-      margin-right: -.2em;
+      margin-top: 2em;
+      margin-right: 4em;
       float: right;
     }
 
