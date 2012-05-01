@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Introduction"
-description: "A simple introduction and "
+description: "A simple introduction."
 category:
 tags: [about]
 ---
@@ -19,7 +19,7 @@ full proposal to project.
 My name is Maximilian Ludvigsson. I am a twenty years old Swedish student at 
 Chalmers university of technology. I am interested in your organization as 
 it is a combination of several of my interests. I have worked with programming 
-and especially web development since an early age and I’m looking forward to 
+and especially web development since an early age and I am looking forward to 
 be able to combine that with biology.  
 
 I view this summer as an opportunity to work with a scientific project and to 
@@ -29,9 +29,9 @@ I am able to work full time on this project during the entire timespan.
 
 ## Summary
 
-Name          Maximilian Ludvigsson
-Email         max@invoco.se
-Technologies  HTML, CSS, Javascript, .Net, Python.
+Name:          Maximilian Ludvigsson   
+Email:         max@invoco.se   
+Technologies:  HTML, CSS, Javascript, .Net, Python.   
 
 
 ## Project
