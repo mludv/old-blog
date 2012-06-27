@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ 
+ <title>Maximilian Ludvigsson</title>
+ <link href="http://mludv.github.com/atom.xml" rel="self"/>
+ <link href="http://mludv.github.com"/>
+ <updated>2012-06-27T11:06:58+02:00</updated>
+ <id>http://mludv.github.com</id>
+ <author>
+   <name>Maximilian Ludvigsson</name>
+   <email>maxiludvigsson@gmail.com</email>
+ </author>
+
+ 
+ <entry>
+   <title>Pointer Events</title>
+   <link href="http://mludv.github.com/2012/06/27/pointer-events"/>
+   <updated>2012-06-27T00:00:00+02:00</updated>
+   <id>http://mludv.github.com/2012/06/27/pointer-events</id>
+   <content type="html">&lt;h1 id='creating_a_inspector'&gt;Creating a inspector&lt;/h1&gt;
+
+&lt;p&gt;As the point of this project is to point out specific DOM elements that needs to be annotated. The most natural way of selecting these elements is with a &amp;#8220;inspector&amp;#8221; such as the one you select elements with in firebug or chrome dev- tools.&lt;/p&gt;
+
+&lt;p&gt;To create this inspector I used a div-element as a mask and set its width and height to match the currently hovered element. Something like this:&lt;/p&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Creating a proxy</title>
+   <link href="http://mludv.github.com/2012/05/30/creating-a-proxy"/>
+   <updated>2012-05-30T00:00:00+02:00</updated>
+   <id>http://mludv.github.com/2012/05/30/creating-a-proxy</id>
+   <content type="html">&lt;h1 id='the_same_origin_policy'&gt;The same origin policy&lt;/h1&gt;
+
+&lt;p&gt;The first challenge in this project was to get around the &amp;#8220;same origin policy&amp;#8221;. This policy permits scripts and web documents on the same domain to access each others methods and contents, but prevent access to pages that originate from a different website.&lt;/p&gt;
+
+&lt;p&gt;As the annotation interface I am building needed to access the HTML of another server I couldn&amp;#8217;t just put the URL in an iframe, access it with javascript and start with the annotation code. I had to serve their website from my server.&lt;/p&gt;
+
+&lt;p&gt;As I am using node for my server I found a library called &lt;a href='https://github.com/nodejitsu/node-http-proxy'&gt;node-http-proxy&lt;/a&gt; on github. Although it looked really feature-rich and stable, it did by default serve on a different port than my node server. I was unable to use it as different ports is equal to different domains.&lt;/p&gt;
+
+&lt;h1 id='the_solution'&gt;The solution&lt;/h1&gt;
+
+&lt;p&gt;I decided to build my own proxy solution. I used a library called &lt;a href='https://github.com/mikeal/request'&gt;request&lt;/a&gt; that made web requests with node really simple. All it took to stream content from a &lt;a href='https://github.com/visionmedia/express'&gt;express&lt;/a&gt;-route was one line of code&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;function(req, res) {
+  request(&amp;quot;http://url.com&amp;quot;).pipe(res);
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I wired it up to serve another page if the server found a query string with the name &lt;em&gt;proxy-url&lt;/em&gt; in the request. This worked good enough with the initial html-page. All request for images and stylesheets by that html-page was not found as those request didn&amp;#8217;t have the &lt;em&gt;proxy-url&lt;/em&gt; query string in the url.&lt;/p&gt;
+
+&lt;p&gt;I installed &lt;a href='https://github.com/dannycoates/node-inspector'&gt;node inspector&lt;/a&gt;, an awesome debugger for node, and discover that the &lt;em&gt;req&lt;/em&gt;-object had a property called &lt;em&gt;headers.referer&lt;/em&gt; containing the url from where the current request originated from. I extracted the query string from this url and passed on any of these requests and boom, I had a working proxy.&lt;/p&gt;
+
+&lt;p&gt;After I had put up some tests to make sure everything was working correctly I made a bit of a refactoring and was able to put everything in a &lt;a href='https://github.com/senchalabs/connect'&gt;connect middleware&lt;/a&gt;. This way is it easy to put the proxy-part of this project in a node module and open source it by itself, after I have got some whitelists and other functionality in place.&lt;/p&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Introduction</title>
+   <link href="http://mludv.github.com/2012/04/28/introduction"/>
+   <updated>2012-04-28T00:00:00+02:00</updated>
+   <id>http://mludv.github.com/2012/04/28/introduction</id>
+   <content type="html">&lt;h1 id='hi'&gt;Hi&lt;/h1&gt;
+
+&lt;p&gt;This is the first post. Everything seems to be working fine.&lt;/p&gt;
+
+&lt;p&gt;To keep everything as open as possible we have been told to publish our full proposal to project.&lt;/p&gt;
+
+&lt;h1 id='application__gsoc'&gt;Application - GSoC&lt;/h1&gt;
+
+&lt;p&gt;My name is Maximilian Ludvigsson. I am a twenty years old Swedish student at Chalmers university of technology. I am interested in your organization as it is a combination of several of my interests. I have worked with programming and especially web development since an early age and I am looking forward to be able to combine that with biology.&lt;/p&gt;
+
+&lt;p&gt;I view this summer as an opportunity to work with a scientific project and to be able to cooperate with people more experienced in the scientific environment.&lt;/p&gt;
+
+&lt;p&gt;I am able to work full time on this project during the entire timespan.&lt;/p&gt;
+
+&lt;h2 id='summary'&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;Name: Maximilian Ludvigsson &lt;br /&gt;Email: max@invoco.se &lt;br /&gt;Technologies: HTML, CSS, Javascript, .Net, Python.&lt;/p&gt;
+
+&lt;h2 id='project'&gt;Project&lt;/h2&gt;
+
+&lt;p&gt;I will be building a web interface for letting users annotate information on the various plugins in BioGPS. This classification is then added to the html markup of the plugin with injected javascript. After an initial annotation, the other pages for that particular source is automatically annotated.&lt;/p&gt;
+
+&lt;p&gt;At the end of this program, a user should be able to annotate websites. This annotation is then saved on the server and is inserted in the HTML with javascript injected in the plugin/website.&lt;/p&gt;
+
+&lt;h3 id='user_workflow'&gt;User workflow&lt;/h3&gt;
+
+&lt;p&gt;A user of this system should follow a workflow similar to this:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;The logged in user chooses a website from a list of the available plugins.&lt;/li&gt;
+
+&lt;li&gt;The website is opened in an iframe.&lt;/li&gt;
+
+&lt;li&gt;The user uses the mouse to select an element on the page (similar to how you select elements in chrome dev-tools or firebug).&lt;/li&gt;
+
+&lt;li&gt;The user is presented by a list of classifiers, one or several is chosen.&lt;/li&gt;
+
+&lt;li&gt;Repeat step 3 and 4 until the user is satisfied with the classification.&lt;/li&gt;
+
+&lt;li&gt;The user is able to search for other genes on this particular website to verify and add/edit classifications.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id='implementation'&gt;Implementation&lt;/h3&gt;
+
+&lt;p&gt;The implementation of this system is primarily going to use javascript, with a backend for saving the annotation rules.&lt;/p&gt;
+
+&lt;h3 id='steps'&gt;Steps&lt;/h3&gt;
+
+&lt;p&gt;The big steps required to finish this project are:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Javascript to allow the user to select a certain HTML element and get a selector for that element to identify it later.&lt;/li&gt;
+
+&lt;li&gt;A form in a modal, or similar, that saves an element’s selector together with the chosen annotation.&lt;/li&gt;
+
+&lt;li&gt;A backend that saves the selector and the annotation (with django?).&lt;/li&gt;
+
+&lt;li&gt;Javascript that receives element selectors and the corresponding annotation, and inserts the annotation in the HTML markup.&lt;/li&gt;
+
+&lt;li&gt;An interface to verify that a site has the proper annotation. Especially across different pages on the same site.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Additional feature that is outside the basic functionality:&lt;/p&gt;
+
+&lt;p&gt;Make the site notify if the HTML markup of a notated site has changed, demanding an update of the notation.&lt;/p&gt;
+
+&lt;h3 id='timeline'&gt;Timeline&lt;/h3&gt;
+
+&lt;p&gt;For achieving this plan I divided the eight weeks in the following steps:&lt;/p&gt;
+
+&lt;h5 id='first_week'&gt;First week&lt;/h5&gt;
+
+&lt;p&gt;Design and prototypes.&lt;/p&gt;
+
+&lt;h5 id='second__third_week'&gt;Second - third week&lt;/h5&gt;
+
+&lt;p&gt;The element-selector and save form.&lt;/p&gt;
+
+&lt;h5 id='fourth_week'&gt;Fourth week&lt;/h5&gt;
+
+&lt;p&gt;The backend.&lt;/p&gt;
+
+&lt;h5 id='fifth_week'&gt;Fifth week&lt;/h5&gt;
+
+&lt;p&gt;The javascript to insert the annotation into the page.&lt;/p&gt;
+
+&lt;h5 id='sixth__seventh_week'&gt;Sixth - seventh week&lt;/h5&gt;
+
+&lt;p&gt;Interface to select different genes on the same page and to verify proper annotation. Create notification functionality if there is time.&lt;/p&gt;
+
+&lt;h5 id='eighth_week'&gt;Eighth week&lt;/h5&gt;
+
+&lt;p&gt;Final fixes and optimization.&lt;/p&gt;
+
+&lt;h2 id='qualifications'&gt;Qualifications&lt;/h2&gt;
+
+&lt;p&gt;I am currently an engineering student at Chalmers university of technology with physics as my major. I am interested in the combination of math, technology and biology, my plan is to choose a master with a biology profile. I think that working with your organisation is a great opportunity to further develop these interests.&lt;/p&gt;
+
+&lt;p&gt;I have taken two programming courses on university level, one in python and one in java, but my experience is mostly from my own web projects. I have been programming since my early teens, mostly web pages in microsoft&amp;#8217;s .Net-stack (before that: classic ASP) and I have done professional work in this area. I later switched more or less to open source and linux.&lt;/p&gt;
+
+&lt;p&gt;I have extensive experience in HTML and CSS. My javascript experience consists mostly of smaller jQuery scripts but it is constantly growing and I have recently been studying backbone.js to learn good patterns for building larger javascript applications. I have also been looking at node.js, mostly for fun.&lt;/p&gt;
+
+&lt;p&gt;It is unfortunate that I don’t have more examples of my work as it mostly consist of joint work with my past employers. I am however confident that I am able to finish this project as it is well in the reach of my current expertise. I also hope that this could be a starting point for me to get more involved in the open source community.&lt;/p&gt;
+
+&lt;p&gt;I’ve recently done a website for a Swedish gymnastics association (http://www.lingforbundet.se). The page is built from scratch and is featuring a content management system I built with javascript against an API.&lt;/p&gt;
+
+&lt;p&gt;Other projects I have been involved in includes a web based order management system for a company (http://www.fmktrafik.se).&lt;/p&gt;</content>
+ </entry>
+ 
+ 
+</feed>

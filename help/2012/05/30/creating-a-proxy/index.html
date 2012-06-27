@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Creating a proxy</title>
+   <meta name="author" content="Maximilian Ludvigsson" />
+   <link href="http://feeds.feedburner.com/mludv" rel="alternate" title="Blog" type="application/atom+xml" />
+
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
+
+   <!-- Typekit -->
+   <script type="text/javascript" src="http://use.typekit.com/rcb5myi.js"></script>
+   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+</head>
+<body>
+
+  <div class="site">
+    <div class="title">
+      <a href="/">Maximilian Ludvigsson</a>
+
+      <a href="/" class="extra">Home</a>
+    </div>
+  
+    <div id="post">
+  <h1>Creating a proxy</h1>
+  <p class="meta">
+    30 May 2012 
+    
+  </p>
+  <h1 id='the_same_origin_policy'>The same origin policy</h1>
+
+<p>The first challenge in this project was to get around the &#8220;same origin policy&#8221;. This policy permits scripts and web documents on the same domain to access each others methods and contents, but prevent access to pages that originate from a different website.</p>
+
+<p>As the annotation interface I am building needed to access the HTML of another server I couldn&#8217;t just put the URL in an iframe, access it with javascript and start with the annotation code. I had to serve their website from my server.</p>
+
+<p>As I am using node for my server I found a library called <a href='https://github.com/nodejitsu/node-http-proxy'>node-http-proxy</a> on github. Although it looked really feature-rich and stable, it did by default serve on a different port than my node server. I was unable to use it as different ports is equal to different domains.</p>
+
+<h1 id='the_solution'>The solution</h1>
+
+<p>I decided to build my own proxy solution. I used a library called <a href='https://github.com/mikeal/request'>request</a> that made web requests with node really simple. All it took to stream content from a <a href='https://github.com/visionmedia/express'>express</a>-route was one line of code</p>
+
+<pre><code>function(req, res) {
+  request(&quot;http://url.com&quot;).pipe(res);
+}</code></pre>
+
+<p>I wired it up to serve another page if the server found a query string with the name <em>proxy-url</em> in the request. This worked good enough with the initial html-page. All request for images and stylesheets by that html-page was not found as those request didn&#8217;t have the <em>proxy-url</em> query string in the url.</p>
+
+<p>I installed <a href='https://github.com/dannycoates/node-inspector'>node inspector</a>, an awesome debugger for node, and discover that the <em>req</em>-object had a property called <em>headers.referer</em> containing the url from where the current request originated from. I extracted the query string from this url and passed on any of these requests and boom, I had a working proxy.</p>
+
+<p>After I had put up some tests to make sure everything was working correctly I made a bit of a refactoring and was able to put everything in a <a href='https://github.com/senchalabs/connect'>connect middleware</a>. This way is it easy to put the proxy-part of this project in a node module and open source it by itself, after I have got some whitelists and other functionality in place.</p>
+</div>
+<!--
+<div id="related">
+  <h2>Related Posts</h2>
+  <ul class="posts">
+    
+      <li><span>27 Jun 2012</span> &raquo; <a href="/2012/06/27/pointer-events">Pointer Events</a></li>
+    
+      <li><span>28 Apr 2012</span> &raquo; <a href="/2012/04/28/introduction">Introduction</a></li>
+    
+  </ul>
+</div>
+-->
+<div class="comments">
+  <h2>Comments</h2>
+
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'mludv'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+</div>
+  
+    <div class="footer">
+      <div class="contact">
+        <p>
+          Maximilian Ludvigsson<br />
+          Blog<br />
+          <a href='mailto:maxiludvigsson@gmail.com'>maxiludvigsson@gmail.com</a>
+        </p>
+      </div>
+      <div class="contact">
+        <p>
+          <a href="http://github.com/mludv/">github.com/mludv</a><br />
+          <a href="http://twitter.com/mludv/">twitter.com/mludv</a><br />
+        </p>
+      </div>
+      <div class="rss">
+        <a href="http://feeds.feedburner.com/mludv">
+          <img src="/images/rss.png" alt="Subscribe to RSS Feed" />
+        </a>
+      </div>
+    </div>
+  </div>
+
+  
+</body>
+</html>

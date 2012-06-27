@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>Introduction</title>
+   <meta name="author" content="Maximilian Ludvigsson" />
+   <link href="http://feeds.feedburner.com/mludv" rel="alternate" title="Blog" type="application/atom+xml" />
+
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
+
+   <!-- Typekit -->
+   <script type="text/javascript" src="http://use.typekit.com/rcb5myi.js"></script>
+   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+</head>
+<body>
+
+  <div class="site">
+    <div class="title">
+      <a href="/">Maximilian Ludvigsson</a>
+
+      <a href="/" class="extra">Home</a>
+    </div>
+  
+    <div id="post">
+  <h1>Introduction</h1>
+  <p class="meta">
+    28 April 2012 
+    
+  </p>
+  <h1 id='hi'>Hi</h1>
+
+<p>This is the first post. Everything seems to be working fine.</p>
+
+<p>To keep everything as open as possible we have been told to publish our full proposal to project.</p>
+
+<h1 id='application__gsoc'>Application - GSoC</h1>
+
+<p>My name is Maximilian Ludvigsson. I am a twenty years old Swedish student at Chalmers university of technology. I am interested in your organization as it is a combination of several of my interests. I have worked with programming and especially web development since an early age and I am looking forward to be able to combine that with biology.</p>
+
+<p>I view this summer as an opportunity to work with a scientific project and to be able to cooperate with people more experienced in the scientific environment.</p>
+
+<p>I am able to work full time on this project during the entire timespan.</p>
+
+<h2 id='summary'>Summary</h2>
+
+<p>Name: Maximilian Ludvigsson <br />Email: max@invoco.se <br />Technologies: HTML, CSS, Javascript, .Net, Python.</p>
+
+<h2 id='project'>Project</h2>
+
+<p>I will be building a web interface for letting users annotate information on the various plugins in BioGPS. This classification is then added to the html markup of the plugin with injected javascript. After an initial annotation, the other pages for that particular source is automatically annotated.</p>
+
+<p>At the end of this program, a user should be able to annotate websites. This annotation is then saved on the server and is inserted in the HTML with javascript injected in the plugin/website.</p>
+
+<h3 id='user_workflow'>User workflow</h3>
+
+<p>A user of this system should follow a workflow similar to this:</p>
+
+<ol>
+<li>The logged in user chooses a website from a list of the available plugins.</li>
+
+<li>The website is opened in an iframe.</li>
+
+<li>The user uses the mouse to select an element on the page (similar to how you select elements in chrome dev-tools or firebug).</li>
+
+<li>The user is presented by a list of classifiers, one or several is chosen.</li>
+
+<li>Repeat step 3 and 4 until the user is satisfied with the classification.</li>
+
+<li>The user is able to search for other genes on this particular website to verify and add/edit classifications.</li>
+</ol>
+
+<h3 id='implementation'>Implementation</h3>
+
+<p>The implementation of this system is primarily going to use javascript, with a backend for saving the annotation rules.</p>
+
+<h3 id='steps'>Steps</h3>
+
+<p>The big steps required to finish this project are:</p>
+
+<ul>
+<li>Javascript to allow the user to select a certain HTML element and get a selector for that element to identify it later.</li>
+
+<li>A form in a modal, or similar, that saves an element’s selector together with the chosen annotation.</li>
+
+<li>A backend that saves the selector and the annotation (with django?).</li>
+
+<li>Javascript that receives element selectors and the corresponding annotation, and inserts the annotation in the HTML markup.</li>
+
+<li>An interface to verify that a site has the proper annotation. Especially across different pages on the same site.</li>
+</ul>
+
+<p>Additional feature that is outside the basic functionality:</p>
+
+<p>Make the site notify if the HTML markup of a notated site has changed, demanding an update of the notation.</p>
+
+<h3 id='timeline'>Timeline</h3>
+
+<p>For achieving this plan I divided the eight weeks in the following steps:</p>
+
+<h5 id='first_week'>First week</h5>
+
+<p>Design and prototypes.</p>
+
+<h5 id='second__third_week'>Second - third week</h5>
+
+<p>The element-selector and save form.</p>
+
+<h5 id='fourth_week'>Fourth week</h5>
+
+<p>The backend.</p>
+
+<h5 id='fifth_week'>Fifth week</h5>
+
+<p>The javascript to insert the annotation into the page.</p>
+
+<h5 id='sixth__seventh_week'>Sixth - seventh week</h5>
+
+<p>Interface to select different genes on the same page and to verify proper annotation. Create notification functionality if there is time.</p>
+
+<h5 id='eighth_week'>Eighth week</h5>
+
+<p>Final fixes and optimization.</p>
+
+<h2 id='qualifications'>Qualifications</h2>
+
+<p>I am currently an engineering student at Chalmers university of technology with physics as my major. I am interested in the combination of math, technology and biology, my plan is to choose a master with a biology profile. I think that working with your organisation is a great opportunity to further develop these interests.</p>
+
+<p>I have taken two programming courses on university level, one in python and one in java, but my experience is mostly from my own web projects. I have been programming since my early teens, mostly web pages in microsoft&#8217;s .Net-stack (before that: classic ASP) and I have done professional work in this area. I later switched more or less to open source and linux.</p>
+
+<p>I have extensive experience in HTML and CSS. My javascript experience consists mostly of smaller jQuery scripts but it is constantly growing and I have recently been studying backbone.js to learn good patterns for building larger javascript applications. I have also been looking at node.js, mostly for fun.</p>
+
+<p>It is unfortunate that I don’t have more examples of my work as it mostly consist of joint work with my past employers. I am however confident that I am able to finish this project as it is well in the reach of my current expertise. I also hope that this could be a starting point for me to get more involved in the open source community.</p>
+
+<p>I’ve recently done a website for a Swedish gymnastics association (http://www.lingforbundet.se). The page is built from scratch and is featuring a content management system I built with javascript against an API.</p>
+
+<p>Other projects I have been involved in includes a web based order management system for a company (http://www.fmktrafik.se).</p>
+</div>
+<!--
+<div id="related">
+  <h2>Related Posts</h2>
+  <ul class="posts">
+    
+      <li><span>27 Jun 2012</span> &raquo; <a href="/2012/06/27/pointer-events">Pointer Events</a></li>
+    
+      <li><span>30 May 2012</span> &raquo; <a href="/2012/05/30/creating-a-proxy">Creating a proxy</a></li>
+    
+  </ul>
+</div>
+-->
+<div class="comments">
+  <h2>Comments</h2>
+
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'mludv'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+</div>
+  
+    <div class="footer">
+      <div class="contact">
+        <p>
+          Maximilian Ludvigsson<br />
+          Blog<br />
+          <a href='mailto:maxiludvigsson@gmail.com'>maxiludvigsson@gmail.com</a>
+        </p>
+      </div>
+      <div class="contact">
+        <p>
+          <a href="http://github.com/mludv/">github.com/mludv</a><br />
+          <a href="http://twitter.com/mludv/">twitter.com/mludv</a><br />
+        </p>
+      </div>
+      <div class="rss">
+        <a href="http://feeds.feedburner.com/mludv">
+          <img src="/images/rss.png" alt="Subscribe to RSS Feed" />
+        </a>
+      </div>
+    </div>
+  </div>
+
+  
+</body>
+</html>
