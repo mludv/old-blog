@@ -4,9 +4,8 @@ title: Maximilian Ludvigsson
 ---
 # Hi, <small>my name is Maximilian Ludvigsson.</small> 
 
-I am selected to the 2012 Google Summer of Code and this blog is supposed to
-document my project. I work with the [Crowdsourcing biology](http://sulab.org/research/crowdbio/)
-project.
+I am selected to the 2012 Google Summer of Code and this blog is for
+documenting my work. The organization I work with is [Crowdsourcing biology](http://sulab.org/research/crowdbio/).
     
 # Posts
 
