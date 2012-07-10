@@ -209,16 +209,34 @@ ul.posts {
         color: #8085C1;
       }
 
-    .site .footer .rss {
+    .site .footer .links {
       margin-top: 2em;
       margin-right: 4em;
       float: right;
     }
 
-      .site .footer .rss img {
+      .site .footer .links img {
         border: 0;
+        width: 50px;
+        height: 50px;
       }
 
+      .site .footer .links .rss {
+        width: 28px;
+        height: 28px;
+        padding: 11px;
+      }
+
+      .site .footer .links a, .site .footer .links a:hover {
+        text-decoration: none;
+      }
+
+      .site .footer .links img:hover {
+        background-color: #EBE8D6;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+      }
 /*****************************************************************************/
 /*
 /* Posts
